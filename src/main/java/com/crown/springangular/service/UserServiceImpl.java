@@ -40,9 +40,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         user.setId(counter.incrementAndGet());
         users.add(user);
+        return user;
     }
 
     @Override

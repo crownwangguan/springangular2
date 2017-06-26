@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>Spring & Angular</title>
-</head>
 <style>
     .username.ng-valid {
         background-color: lightgreen;

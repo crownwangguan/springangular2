@@ -42,16 +42,16 @@ public class HelloWorldRestController {
 
     // Create a user
     @RequestMapping(value = "/user/", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         System.out.println("Creating User " + user.getUsername());
 
         if (userService.isUserExist(user)) {
             System.out.println("A User with name " + user.getUsername() + " already exist");
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+            return new ResponseEntity<User>(user, HttpStatus.CONFLICT);
         }
 
-        userService.saveUser(user);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        User newUser = userService.saveUser(user);
+        return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
     }
 
     // Update a User
